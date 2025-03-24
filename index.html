@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Taverna - Building Excitement for People</title>
+    <style>
+        :root {
+            --primary: #FFD700;
+            --secondary: #4682B4;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+            --accent: #E74C3C;
+            --wood: #8B4513;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--dark);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('img/tavern-bg.png') center/cover;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .pixel-box {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .pixel-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: 5px solid var(--wood);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .values {
+            margin-top: 60px;
+        }
+        
+        .values-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .value-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            background-color: var(--primary);
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-icon img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Why Us Section */
+        .why-us {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .why-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .why-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .call-to-action {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .call-to-action h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Pixel Art Characters */
+        .pixel-characters {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 50px 0;
+        }
+        
+        .pixel-character {
+            width: 120px;
+            text-align: center;
+        }
+        
+        .pixel-character img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        
+        .pixel-character p {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .pixel-box {
+                order: -1;
+                margin-bottom: 30px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="/api/placeholder/40/40" alt="Digital Taverna Logo" class="logo-img">
+                Digital Taverna
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Digital Taverna</h1>
+            <p>"A physical taverna is a building that houses excited people, and in the digital taverna - we are building excitement for people."</p>
+            <a href="contact.html" class="btn">Let's Build Something Great</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Vision & Mission</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Vision</h3>
+                    <p>We're here to reshape the way brands connect with real people, creating experiences packed with thrills, authenticity, and absolutely no unnecessary seriousness.</p>
+                    <br>
+                    <h3>Our Mission</h3>
+                    <p>We build brands that bring the fun, cut the nonsense, and put people first. It's all about thrills, simplicity, and keeping things real.</p>
+                </div>
+                <div class="pixel-box">
+                    <img src="/api/placeholder/400/320" alt="Digital Taverna Pixel Art" class="pixel-image">
+                </div>
+            </div>
+            
+            <div class="values">
+                <div class="section-title">
+                    <h2>Our Values</h2>
+                </div>
+                <div class="values-container">
+                    <div class="value-card">
+                        <h3>1. Building for People</h3>
+                        <p>At the core of the brands we build is a commitment to people. The goal of our gambling experiences is to mirror the welcoming environment of a taverna. We craft experiences where players feel at home, engaged, and valued.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>2. Brands Made of Thrills</h3>
+                        <p>By infusing the spirited atmosphere of a taverna into our brands, we amplify these thrills. Players aren't just engaging with a game; they're part of a collective excitement that a taverna embodies.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>3. Why So Serious?</h3>
+                        <p>Seriousness has no business in a taverna, and the digital taverna will not make seriousness into a business. We strip away unnecessary formalities. Our brands encourage players to enjoy themselves.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/60/60" alt="CRM Icon">
+                    </div>
+                    <div class="service-content">
+                        <h3>CRM: Building Player Loyalty</h3>
+                        <p>We design and implement customized CRM strategies to enhance player retention, engagement, and lifetime value. Through data analysis, segmentation, and personalized communication, we keep players returning for more.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/60/60" alt="SEO Icon">
+                    </div>
+                    <div class="service-content">
+                        <h3>SEO & SEM: Maximize Your Reach</h3>
+                        <p>With expert search engine optimization (SEO) and paid search strategies (SEM), we ensure your platform ranks high in search results and attracts high-value players.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/60/60" alt="Digital Marketing Icon">
+                    </div>
+                    <div class="service-content">
+                        <h3>Digital Marketing: Performance-Driven Growth</h3>
+                        <p>Our data-driven marketing campaigns leverage social media, content marketing, and influencer partnerships to attract and retain players.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/60/60" alt="Branding Icon">
+                    </div>
+                    <div class="service-content">
+                        <h3>Branding & Design: Stand Out in the Crowd</h3>
+                        <p>Your brand's identity is key to success. We craft compelling visual identities, UX/UI designs, and storytelling strategies that make your gaming platform unforgettable.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/60/60" alt="AI Icon">
+                    </div>
+                    <div class="service-content">
+                        <h3>AI & Future: Innovating for Tomorrow</h3>
+                        <p>We leverage artificial intelligence and cutting-edge technologies to optimize player engagement, detect fraud, and drive predictive analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Work with Digital Taverna?</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-icon">⭐</div>
+                    <h3>Industry Expertise</h3>
+                    <p>Years of experience in iGaming marketing, branding, and operations.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🎯</div>
+                    <h3>Tailored Solutions</h3>
+                    <p>Custom strategies designed for your unique business goals.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">📊</div>
+                    <h3>Data-Driven Approach</h3>
+                    <p>Leveraging analytics for measurable success.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🛠️</div>
+                    <h3>Full-Service Support</h3>
+                    <p>From acquisition to retention, we've got you covered.</p>
+                </div>
+            </div>
+            <div class="call-to-action">
+                <h3>Let's Build Something Great</h3>
+                <p>Ready to take your iGaming brand to the next level? Partner with Digital Taverna and let's craft a winning strategy together.</p>
+                <a href="contact.html" class="btn">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Digital Taverna</h3>
+                    <p>Building excitement for people in the digital world.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html#crm">CRM</a></li>
+                        <li><a href="services.html#seo">SEO & SEM</a></li>
+                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                        <li><a href="services.html#branding">Branding & Design</a></li>
+                        <li><a href="services.html#ai">AI & Future</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: info@digitaltaverna.com</li>
+                        <li>Phone: +1 (123) 456-7890</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Digital Taverna Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
