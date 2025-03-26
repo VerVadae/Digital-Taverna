@@ -68,39 +68,86 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
+        const inputs = contactForm.querySelectorAll('input, textarea, select');
+        const coinSvgs = [];
+        
+        inputs.forEach(input => {
+            // Create a wrapper div for each input
+            const wrapper = document.createElement('div');
+            wrapper.style.position = 'relative';
+            input.parentNode.insertBefore(wrapper, input);
+            wrapper.appendChild(input);
+
+            // This is where we create the coin icon for validation. Top section is the position, while the second half is the actual grapic and colour design.
+            const coinElement = document.createElement('div');
+            coinElement.innerHTML = `
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="
+                    position: absolute;
+                    right: calc(-1.5rem);
+                    top: 1.2rem;
+                    transform: translateY(-50%);
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                ">
+                    <circle cx="16" cy="16" r="14" fill="#FFD700"/>
+                    <path d="M16 8 L18 14 L24 14 L19 18 L21 24 L16 20 L11 24 L13 18 L8 14 L14 14 Z"
+                          fill="#FFA500"/>
+                </svg>
+            `;
+            wrapper.appendChild(coinElement);
+            const coinSvg = coinElement.querySelector('svg');
+            coinSvgs.push(coinSvg);
+
+            // Input validation listener
+            input.addEventListener('input', function() {
+                // Remove previous validation states
+                wrapper.classList.remove('input-valid', 'input-invalid');
+                coinSvg.style.opacity = '0';
+
+                // Validate the input
+                if (input.validity.valid) {
+                    wrapper.classList.add('input-valid');
+                    coinSvg.style.opacity = '1';
+                    
+                    // Synchronize spin for all coins
+                    coinSvgs.forEach((svg, index) => {
+                        // Reset animation to create sync effect
+                        svg.style.animation = 'none';
+                        // Force reflow to restart animation
+                        void svg.offsetWidth;
+                        svg.style.animation = `coin-pop 0.5s ease-out, coin-spin 1s linear infinite`;
+                    });
+                } else {
+                    wrapper.classList.add('input-invalid');
+                }
+            });
+        });
+
+        // Form submission handler
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Form validation could be added here
-            
-            // Simulate form submission
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            
-            // Simulate API call delay
-            setTimeout(function() {
-                // Create success message
-                const successMessage = document.createElement('div');
-                successMessage.className = 'form-success';
-                successMessage.innerHTML = '<p>Message sent successfully! We\'ll get back to you soon.</p>';
+            // Check form validity
+            if (contactForm.checkValidity()) {
+                // Form is valid - proceed with submission
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
                 
-                // Replace form with success message
-                contactForm.innerHTML = '';
-                contactForm.appendChild(successMessage);
-                
-                // Style the success message
-                successMessage.style.padding = '40px 20px';
-                successMessage.style.textAlign = 'center';
-                successMessage.style.color = '#4BB543';
-                successMessage.style.fontFamily = '"Press Start 2P", cursive';
-                successMessage.style.fontSize = '0.9rem';
-                
-                // You would typically send form data to your backend here
-                // For example using fetch API or XMLHttpRequest
-            }, 1500);
+                setTimeout(function() {
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'form-success';
+                    successMessage.innerHTML = '<p>Message sent successfully! We\'ll get back to you soon.</p>';
+                    
+                    contactForm.innerHTML = '';
+                    contactForm.appendChild(successMessage);
+                }, 1500);
+            } else {
+                // Trigger validation display
+                contactForm.reportValidity();
+            }
         });
     }
 });
