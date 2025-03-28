@@ -7,20 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle functionality
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+   
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
-            
+           
             // Animate the hamburger icon
             const spans = menuToggle.querySelectorAll('span');
             spans.forEach(span => span.classList.toggle('active'));
         });
     }
-    
+   
     // Add scroll event for header styling
     const header = document.querySelector('header');
-    
+   
     if (header) {
         window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
@@ -30,41 +30,66 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Add smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+   
+    // Smooth page scrolling for quick links
+    function smoothScrollToSection(targetId) {
+        const targetElement = document.querySelector(targetId);
+       
+        if (!targetElement) {
+            console.error(`Target element with ID ${targetId} not found`);
+            return;
+        }
+        // Calculate absolute position of the target element
+        const rect = targetElement.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const headerHeight = document.querySelector('header').offsetHeight;
+       
+        // Calculate final scroll position with explicit offset
+        const offsetPosition = scrollTop + rect.top - headerHeight - 100;
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        });
+    }
+
+    function handleNavigation(href) {
+        // Extract the current page path (without query parameters)
+        const currentPath = window.location.pathname;
+       
+        // Check if the link is to a different page
+        if (href.includes('.html') && !href.startsWith(currentPath)) {
+            // Cross-page navigation
+            const [page, section] = href.split('#');
+            sessionStorage.setItem('scrollToSection', section || '');
+            window.location.href = href;
+        } else {
+            // Same-page or current page navigation
+            // Remove .html# if present
+            const cleanHref = href.replace('.html#', '#');
+            smoothScrollToSection(cleanHref);
+        }
+    }
+
+    // Handle both same-page and cross-page links
+    document.querySelectorAll('a[href^="#"], a[href*=".html#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            
-            // Only process if the href is not just "#"
-            if (targetId !== '#') {
-                e.preventDefault();
-                
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    // Calculate header height for offset
-                    const headerHeight = header ? header.offsetHeight : 0;
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - headerHeight - 20,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        
-                        // Reset hamburger icon
-                        const spans = menuToggle.querySelectorAll('span');
-                        spans.forEach(span => span.classList.remove('active'));
-                    }
-                }
-            }
+            e.preventDefault();
+            const href = this.getAttribute("href");
+            handleNavigation(href);
         });
     });
+
+    // Handle cross-page and same-page scrolling after page load
+    const sectionToScroll = sessionStorage.getItem('scrollToSection');
+    if (sectionToScroll) {
+        // Small delay to ensure page is fully loaded
+        setTimeout(() => {
+            smoothScrollToSection(`#${sectionToScroll}`);
+            sessionStorage.removeItem('scrollToSection');
+        }, 100);
+    }
     
-    // Form submission handling for spinning coins for valid, and invalid danger shake animations.
+    // Form submission handling for spinning coins and form validation
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
@@ -77,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
             input.parentNode.insertBefore(wrapper, input);
             wrapper.appendChild(input);
 
-            // This is where we create the coin icon for validation. Top section is the position, while the second half is the actual grapic and colour design.
+            // Create coin icon for validation
             const coinElement = document.createElement('div');
             coinElement.innerHTML = `
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="
@@ -99,17 +124,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const coinSvg = coinElement.querySelector('svg');
             coinSvgs.push(coinSvg);
 
-            // Validates the form information and asjust error handling or optimistic rendering CSS classes.
+            // Validate form input
             input.addEventListener('input', function() {
                 wrapper.classList.remove('input-valid', 'input-invalid');
                 coinSvg.style.opacity = '0';
-
 
                 if (input.validity.valid) {
                     wrapper.classList.add('input-valid');
                     coinSvg.style.opacity = '1';
                     
-                    // Synchronize spin for all the coins. Do not change for ADHD reasons.
+                    // Synchronize spin for all coins
                     coinSvgs.forEach((svg, index) => {
                         svg.style.animation = 'none';
                         void svg.offsetWidth;
