@@ -717,6 +717,8 @@ section {
 /* ---------- Contact Page ---------- */
 .contact-section {
     padding-top: 40px;
+    background-color: #111; /* Ensure dark background for the entire section */
+    color: var(--light); /* Ensure text is light and readable */
 }
 
 .contact-intro {
@@ -737,41 +739,70 @@ section {
     min-width: 300px;
 }
 
+/* Pixel form background and border */
 .pixel-form {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 2.5rem;  /* Changed from 40px to 2.5rem for screen scaling solution. Note for adjustments later. */ 
+    background-color: rgba(0, 0, 0, 0.2); /* Keep the subtle dark background */
+    padding: 2.5rem; /* Increased padding for better form spacing */
     border: 4px solid var(--wood-medium);
+    border-radius: 8px; /* Optional: Rounded borders for the form container */
 }
 
+/* Form group styling */
 .form-group {
     margin-bottom: 25px;
 }
 
+/* Label Styling */
 .form-group label {
     display: block;
     margin-bottom: 10px;
     font-family: 'Press Start 2P', cursive;
     font-size: 0.8rem;
-    color: var(--primary);
+    color: var(--primary); /* Primary color for labels */
 }
 
+/* Input, Select, and Textarea Styling */
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
     padding: 12px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: 3px solid var(--wood-medium);
-    color: var(--light);
+    background-color: rgba(0, 0, 0, 0.3); /* Dark background */
+    border: 3px solid var(--wood-medium); /* Wood-like border */
+    color: var(--light); /* Light text color */
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
+    border-radius: 5px; /* Rounded corners for input elements */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
 }
 
+/* Focus State for input, select, and textarea */
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--primary);
+    border-color: var(--primary); /* Change border color to primary color on focus */
+    background-color: rgba(0, 0, 0, 0.4); /* Darken the background slightly */
+}
+
+/* Styling for select options */
+.form-group select option {
+    background-color: black; /* Dark wood background */
+    color: #FFD700; /* Light text color */
+    font-family: 'Press Start 2P', cursive; /* Pixel art font */
+    padding: 10px;
+}
+
+.form-group select option:checked {
+    background-color: var(--wood-medium); /* Highlighted option color */
+    color: var(--primary); /* Gold color for selected option */
+}
+
+
+/* Hover effect for select options */
+.form-group select option:hover {
+    background-color: rgba(255, 215, 0, 0.2); /* Subtle gold highlight */
+    color: var(--primary);
 }
 
 .contact-info {
@@ -853,75 +884,8 @@ section {
     margin-bottom: 15px;
 }
 
-/* Form Validation and Animation Styles */
-.pixel-danger-wrapper {
-    position: relative;
-}
 
-.pixel-danger-wrapper input,
-.pixel-danger-wrapper textarea,
-.pixel-danger-wrapper select {
-    transition: all 0.3s ease;
-}
-
-.pixel-danger-wrapper.invalid input,
-.pixel-danger-wrapper.invalid textarea,
-.pixel-danger-wrapper.invalid select {
-    border-color: #FF0000;
-    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-}
-
-.pixel-danger-wrapper.valid input,
-.pixel-danger-wrapper.valid textarea,
-.pixel-danger-wrapper.valid select {
-    border-color: var(--primary);
-    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.5);
-}
-
-/* Pixel Danger Animation */
-.pixel-danger-animation {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    overflow: hidden;
-    margin-top: 5px;
-}
-
-.pixel-danger-blocks {
-    display: flex;
-    animation: danger-shake 0.5s infinite;
-}
-
-.pixel-block {
-    width: 8px;
-    height: 8px;
-    background-color: #FF0000;
-    margin: 0 2px;
-    opacity: 0.7;
-}
-
-@keyframes danger-shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-/* Pixel Coin Animation */
-.pixel-coin-animation {
-    position: absolute;
-    top: -35px;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    animation: coin-float 1s ease-in-out;
-}
-
-.pixel-coin {
-    transform-origin: center;
-    animation: coin-spin 0.5s linear infinite;
-}
+/* Pixel Coin Animation for Contact Form */
 
 @keyframes coin-float {
     0% { opacity: 0; transform: translateY(10px); }

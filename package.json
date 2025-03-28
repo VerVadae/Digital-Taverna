@@ -1,0 +1,16 @@
+{
+    "name": "digital-taverna-demo-server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.21.2",
+        "nodemon": "^3.1.9"
+    }
+}

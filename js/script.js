@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form submission handling
+    // Form submission handling for spinning coins for valid, and invalid danger shake animations.
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const coinSvgs = [];
         
         inputs.forEach(input => {
-            // Create a wrapper div for each input
             const wrapper = document.createElement('div');
             wrapper.style.position = 'relative';
             input.parentNode.insertBefore(wrapper, input);
@@ -100,22 +99,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const coinSvg = coinElement.querySelector('svg');
             coinSvgs.push(coinSvg);
 
-            // Input validation listener
+            // Validates the form information and asjust error handling or optimistic rendering CSS classes.
             input.addEventListener('input', function() {
-                // Remove previous validation states
                 wrapper.classList.remove('input-valid', 'input-invalid');
                 coinSvg.style.opacity = '0';
 
-                // Validate the input
+
                 if (input.validity.valid) {
                     wrapper.classList.add('input-valid');
                     coinSvg.style.opacity = '1';
                     
-                    // Synchronize spin for all coins
+                    // Synchronize spin for all the coins. Do not change for ADHD reasons.
                     coinSvgs.forEach((svg, index) => {
-                        // Reset animation to create sync effect
                         svg.style.animation = 'none';
-                        // Force reflow to restart animation
                         void svg.offsetWidth;
                         svg.style.animation = `coin-pop 0.5s ease-out, coin-spin 1s linear infinite`;
                     });
