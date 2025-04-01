@@ -27,6 +27,12 @@
     box-sizing: border-box;
 }
 
+/* Created this for testing CSS scrolling method. */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px; /* Adjust based on your header height + desired padding */
+  }
+
 body {
     background-color: var(--tavern-bg);
     color: var(--light);

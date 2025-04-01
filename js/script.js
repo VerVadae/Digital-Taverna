@@ -7,20 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle functionality
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-   
+    
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
-           
+            
             // Animate the hamburger icon
             const spans = menuToggle.querySelectorAll('span');
             spans.forEach(span => span.classList.toggle('active'));
         });
     }
-   
+    
     // Add scroll event for header styling
     const header = document.querySelector('header');
-   
+    
     if (header) {
         window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
@@ -30,61 +30,52 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-   
-    // Smooth page scrolling for quick links
-    function smoothScrollToSection(targetId) {
-        const targetElement = document.querySelector(targetId);
-       
-        if (!targetElement) {
-            console.error(`Target element with ID ${targetId} not found`);
-            return;
-        }
-        // Calculate absolute position of the target element
-        const rect = targetElement.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // This sets the animation style of the auto scrolling. Do not change as it looks fairly smooth as is.
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Calculates the relative positiion of the headings we want for quick naving against the Viewport. So it should make it works across devices.
+    function scrollToElementWithOffset(elementId) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+        
         const headerHeight = document.querySelector('header').offsetHeight;
-       
-        // Calculate final scroll position with explicit offset
-        const offsetPosition = scrollTop + rect.top - headerHeight - 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 100;
+        
         window.scrollTo({
             top: offsetPosition,
-            behavior: "smooth"
+            behavior: 'smooth'
         });
     }
-
+    
+    // Checks for on and off page quick link presses.
     function handleNavigation(href) {
-        // Extract the current page path (without query parameters)
-        const currentPath = window.location.pathname;
-       
-        // Check if the link is to a different page
-        if (href.includes('.html') && !href.startsWith(currentPath)) {
-            // Cross-page navigation
+        if (href.includes('.html')) {
             const [page, section] = href.split('#');
-            sessionStorage.setItem('scrollToSection', section || '');
+            if (section) {
+                sessionStorage.setItem('scrollToSection', section);
+            }
             window.location.href = href;
-        } else {
-            // Same-page or current page navigation
-            // Remove .html# if present
-            const cleanHref = href.replace('.html#', '#');
-            smoothScrollToSection(cleanHref);
+        } else if (href.startsWith('#')) {
+            const targetId = href.substring(1);
+            scrollToElementWithOffset(targetId);
         }
     }
-
-    // Handle both same-page and cross-page links
+    
     document.querySelectorAll('a[href^="#"], a[href*=".html#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const href = this.getAttribute("href");
+            const href = this.getAttribute('href');
             handleNavigation(href);
         });
     });
-
-    // Handle cross-page and same-page scrolling after page load
+    
+    // Saves area and pauses briefly to ensure enough loading time has passed.
     const sectionToScroll = sessionStorage.getItem('scrollToSection');
     if (sectionToScroll) {
-        // Small delay to ensure page is fully loaded
         setTimeout(() => {
-            smoothScrollToSection(`#${sectionToScroll}`);
+            scrollToElementWithOffset(sectionToScroll);
             sessionStorage.removeItem('scrollToSection');
         }, 100);
     }
