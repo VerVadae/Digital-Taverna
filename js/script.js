@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Saves area and pauses briefly to ensure enough loading time has passed.
+    // Sets a timer to ensure slower internet speeds can load the service html file properly. 
     const sectionToScroll = sessionStorage.getItem('scrollToSection');
     if (sectionToScroll) {
         setTimeout(() => {
