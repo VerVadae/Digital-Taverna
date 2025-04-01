@@ -236,7 +236,45 @@ header {
 .pixel-btn:hover {
     transform: translate(-2px, -2px);
     box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+
 }
+
+.pixel-btn:before {
+    content: "1UP"; 
+    background-color: #111;
+    color: purple;  
+    position: absolute;
+    left: -25px;  
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;  
+    animation: pixel-btn-keyframe-animation 2s infinite;
+}
+
+.pixel-btn:after {
+    content: "1UP";
+    background-color: #111;
+    color: purple;  
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;  
+    animation: pixel-btn-keyframe-animation 2s infinite;
+}
+
+ @keyframes pixel-btn-keyframe-animation {
+0% {
+    transform: translateY(0%) scale(50%)
+}
+75%{
+    transform: translateY(-100%) scale(50%)
+}
+100%{
+    transform: translateY(-100%) scaleX(100%)
+
+}
+ }
 
 .pixel-btn:active {
     transform: translate(2px, 2px);
