@@ -582,6 +582,9 @@ section {
     height: 80px;
     object-fit: contain;
     margin-bottom: 15px;
+    border: 3px solid #8B4513;
+    image-rendering: pixelated;
+    box-shadow: 2.5px 2.5px 2.5px var(--wood-dark);
 }
 
 .pixel-character p {
