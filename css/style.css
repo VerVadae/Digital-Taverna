@@ -239,42 +239,28 @@ header {
 
 }
 
-.pixel-btn:before {
-    content: "1UP"; 
-    background-color: #111;
-    color: purple;  
+.pixel-btn:before, 
+.pixel-btn:after {
+    content: "";
     position: absolute;
-    left: -25px;  
+    width: 48px;  /* Increased size */
+    height: 48px; /* Increased size */
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.5rem;  
-    animation: pixel-btn-keyframe-animation 2s infinite;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='none'/%3E%3Crect class='brick brick1' x='6' y='36' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick2' x='18' y='36' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick3' x='30' y='36' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick4' x='12' y='30' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick5' x='24' y='30' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick6' x='6' y='24' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick7' x='18' y='24' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick8' x='30' y='24' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick9' x='12' y='18' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick10' x='24' y='18' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick11' x='6' y='12' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick12' x='18' y='12' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='brick brick13' x='30' y='12' width='12' height='6' fill='%238B4513' opacity='0'/%3E%3Crect class='highlight highlight1' x='7.5' y='37.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight2' x='19.5' y='37.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight3' x='31.5' y='37.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight4' x='13.5' y='31.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight5' x='25.5' y='31.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight6' x='7.5' y='25.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight7' x='19.5' y='25.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight8' x='31.5' y='25.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight9' x='13.5' y='19.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight10' x='25.5' y='19.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight11' x='7.5' y='13.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight12' x='19.5' y='13.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='highlight highlight13' x='31.5' y='13.5' width='3' height='1.5' fill='%23FFC107' opacity='0'/%3E%3Crect class='border border1' x='6' y='36' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border2' x='18' y='36' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border3' x='30' y='36' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border4' x='12' y='30' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border5' x='24' y='30' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border6' x='6' y='24' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border7' x='18' y='24' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border8' x='30' y='24' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border9' x='12' y='18' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border10' x='24' y='18' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border11' x='6' y='12' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border12' x='18' y='12' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Crect class='border border13' x='30' y='12' width='12' height='6' fill='none' stroke='%235D2906' stroke-width='1.5' opacity='0'/%3E%3Cstyle%3E.brick1,.highlight1,.border1{animation:appear .15s .15s forwards,disappear .1s 2.1s forwards,appear .15s 2.25s forwards}.brick2,.highlight2,.border2{animation:appear .15s .3s forwards,disappear .1s 2.1s forwards,appear .15s 2.4s forwards}.brick3,.highlight3,.border3{animation:appear .15s .45s forwards,disappear .1s 2.1s forwards,appear .15s 2.55s forwards}.brick4,.highlight4,.border4{animation:appear .15s .6s forwards,disappear .1s 2.1s forwards,appear .15s 2.7s forwards}.brick5,.highlight5,.border5{animation:appear .15s .75s forwards,disappear .1s 2.1s forwards,appear .15s 2.85s forwards}.brick6,.highlight6,.border6{animation:appear .15s .9s forwards,disappear .1s 2.1s forwards,appear .15s 3s forwards}.brick7,.highlight7,.border7{animation:appear .15s 1.05s forwards,disappear .1s 2.1s forwards,appear .15s 3.15s forwards}.brick8,.highlight8,.border8{animation:appear .15s 1.2s forwards,disappear .1s 2.1s forwards,appear .15s 3.3s forwards}.brick9,.highlight9,.border9{animation:appear .15s 1.35s forwards,disappear .1s 2.1s forwards,appear .15s 3.45s forwards}.brick10,.highlight10,.border10{animation:appear .15s 1.5s forwards,disappear .1s 2.1s forwards,appear .15s 3.6s forwards}.brick11,.highlight11,.border11{animation:appear .15s 1.65s forwards,disappear .1s 2.1s forwards,appear .15s 3.75s forwards}.brick12,.highlight12,.border12{animation:appear .15s 1.8s forwards,disappear .1s 2.1s forwards,appear .15s 3.9s forwards}.brick13,.highlight13,.border13{animation:appear .15s 1.95s forwards,disappear .1s 2.1s forwards,appear .15s 4.05s forwards}@keyframes appear{from{opacity:0}to{opacity:1}}@keyframes disappear{from{opacity:1}to{opacity:0}}%3C/style%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.pixel-btn:before {
+    left: -50px; /* Adjusted for larger SVG */
 }
 
 .pixel-btn:after {
-    content: "1UP";
-    background-color: #111;
-    color: purple;  
-    position: absolute;
-    right: -25px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.5rem;  
-    animation: pixel-btn-keyframe-animation 2s infinite;
+    right: -50px; /* Adjusted for larger SVG */
 }
 
- @keyframes pixel-btn-keyframe-animation {
-0% {
-    transform: translateY(0%) scale(50%)
-}
-75%{
-    transform: translateY(-100%) scale(50%)
-}
-100%{
-    transform: translateY(-100%) scaleX(100%)
-
-}
- }
 
 .pixel-btn:active {
     transform: translate(2px, 2px);
