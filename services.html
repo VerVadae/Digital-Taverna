@@ -11,6 +11,149 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <!-- Google font for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+ul {
+    padding-left: 22px; /* Increased padding for list container */
+    margin: 0 0 15px 0;
+}
+
+ul li {
+    font-size: 15px; /* Slightly smaller base font size */
+    line-height: 1.5;
+    padding: 4px 0;
+    margin-bottom: 5px;
+    position: relative;
+    list-style-type: none;
+    padding-left: 8px; /* Increased space after marker */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Custom marker using ::before for better cross-browser support */
+ul li::before {
+    content: "┼";
+    color: #FFD700;
+    position: absolute;
+    left: -15px; /* Adjusted position */
+    font-size: 14px; /* Smaller marker */
+}
+
+/* Add space between lists for better separation */
+.service-container ul {
+    margin-right: 10px;
+}
+
+/* Responsive adjustments for specific device widths */
+/* Large tablets and small laptops (covers 915px, 883px) */
+@media (max-width: 992px) {
+    ul {
+        padding-left: 20px;
+    }
+    
+    ul li {
+        font-size: 14px;
+        line-height: 1.4;
+        padding-left: 7px;
+    }
+    
+    ul li::before {
+        left: -14px;
+        font-size: 13px;
+    }
+}
+
+/* Tablets (covers 854px, 800px, 812px) */
+@media (max-width: 854px) {
+    ul {
+        padding-left: 18px;
+    }
+    
+    ul li {
+        font-size: 13.5px;
+        padding-left: 6px;
+        margin-bottom: 4px;
+    }
+    
+    ul li::before {
+        left: -13px;
+        font-size: 12.5px;
+    }
+}
+
+/* Smaller tablets and large phones (covers 812px, 800px, 768px, 760px) */
+@media (max-width: 812px) {
+    ul {
+        padding-left: 17px;
+    }
+    
+    ul li {
+        font-size: 13px;
+        line-height: 1.3;
+        padding-left: 5px;
+    }
+    
+    ul li::before {
+        left: -12px;
+        font-size: 12px;
+    }
+}
+
+/* Mobile landscape (covers 760px, 740px) */
+@media (max-width: 760px) {
+    ul {
+        padding-left: 16px;
+    }
+    
+    ul li {
+        font-size: 12.5px;
+        padding-left: 4px;
+        margin-bottom: 3px;
+    }
+    
+    ul li::before {
+        left: -11px;
+        font-size: 11.5px;
+    }
+}
+
+/* Mobile portrait (covers 667px) */
+@media (max-width: 667px) {
+    ul {
+        padding-left: 15px;
+    }
+    
+    ul li {
+        font-size: 12px;
+        line-height: 1.2;
+        padding-left: 3px;
+    }
+    
+    ul li::before {
+        left: -10px;
+        font-size: 11px;
+    }
+}
+
+/* Adjust list width for better spacing */
+@media (max-width: 992px) {
+    .service-container {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    ul {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+</style>
 </head>
 <body>
     <!-- Header -->
@@ -65,25 +208,18 @@
                     <h2>CRM: Building Player Loyalty</h2>
                     <p>We design and implement customized CRM strategies to enhance player retention, engagement, and lifetime value. Through data analysis, segmentation, and personalized communication, we keep players returning for more.</p>
                     <div class="service-features">
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Player lifecycle management</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Segmentation strategies</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Personalized communication</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Retention campaigns</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>VIP programs</span>
+                        <div class="service-container">
+                            <ul class="services-list">
+                                <li>Player lifecycle management</li>
+                                <li>Segmentation strategies</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>Personalized communication</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>Retention communication</li>
+                                <li>VIP programs</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -98,25 +234,18 @@
                     <h2>SEO & SEM: Maximize Your Reach</h2>
                     <p>With expert search engine optimization (SEO) and paid search strategies (SEM), we ensure your platform ranks high in search results and attracts high-value players. From keyword optimization to paid ad campaigns, we drive traffic that converts.</p>
                     <div class="service-features">
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Keyword research and optimization</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Competitive analysis</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Content strategy</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>PPC campaign management</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Performance reporting</span>
+                        <div class="service-container">
+                            <ul class="services-list">
+                                <li>Keyword research and optimization</li>
+                                <li>Competator analysis</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>Content strategy</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>PPC campaign management</li>
+                                <li>Performance reports</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -131,25 +260,18 @@
                     <h2>Digital Marketing: Performance-Driven Growth</h2>
                     <p>Our data-driven marketing campaigns leverage social media, content marketing, and influencer partnerships to attract and retain players. We create engaging content that builds brand awareness and fosters a loyal community.</p>
                     <div class="service-features">
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Social media marketing</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Content creation</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Influencer partnerships</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Email marketing</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Affiliate management</span>
+                        <div class="service-container">
+                            <ul class="services-list">
+                                <li>Social media marketing</li>
+                                <li>Content creation</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>Influencer partnerships</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>Email marketing</li>
+                                <li>Affiliate management</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -164,25 +286,18 @@
                     <h2>Branding & Design: Stand Out in the Crowd</h2>
                     <p>Your brand's identity is key to success. We craft compelling visual identities, UX/UI designs, and storytelling strategies that make your gaming platform unforgettable. From logo creation to full-scale brand development, we ensure consistency across all touchpoints.</p>
                     <div class="service-features">
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Brand identity development</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Logo and visual design</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>UX/UI design</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Brand messaging</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Brand guidelines</span>
+                        <div class="service-container">
+                            <ul class="services-list">
+                                <li>Brand identity development</li>
+                                <li>Logo and visual design</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>UX/UI design</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>Brand messaging</li>
+                                <li>Brand guidelines</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -197,25 +312,18 @@
                     <h2>AI & Future: Innovating for Tomorrow</h2>
                     <p>We leverage artificial intelligence and cutting-edge technologies to optimize player engagement, detect fraud, and drive predictive analytics. Stay ahead of industry trends with automation and AI-powered solutions.</p>
                     <div class="service-features">
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>AI-powered personalization</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Predictive analytics</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Chatbot implementation</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Fraud detection</span>
-                        </div>
-                        <div class="feature">
-                            <img src="img/pixel-check.png" alt="Check" class="pixel-icon-small">
-                            <span>Automation solutions</span>
+                        <div class="service-container">
+                            <ul class="services-list">
+                                <li>AI-powered personalization</li>
+                                <li>Predictive analytics</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>Chatbot implementation</li>
+                            </ul>
+                            <ul class="services-list">
+                                <li>Fraud detection</li>
+                                <li>Automation solutions</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

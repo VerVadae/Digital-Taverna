@@ -426,6 +426,19 @@ section {
 }
 
 /* ---------- Detailed Services Page ---------- */
+
+/* .services-list::marker {
+    color:#FFC107
+
+} */
+
+.service-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .services-intro {
     padding-top: 30px;
     padding-bottom: 0;
