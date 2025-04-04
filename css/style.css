@@ -472,10 +472,13 @@ section {
 }
 
 .service-icon-large img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
+    margin-bottom: 15px;
+    border: 3px solid #8B4513;
     image-rendering: pixelated;
+    box-shadow: 2.5px 2.5px 2.5px var(--wood-dark);
 }
 
 .service-detailed-content {
