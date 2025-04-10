@@ -152,6 +152,17 @@ header {
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
+.header-nav-link-active {
+    background-color: rgb(142, 103, 6); 
+    border-bottom: 2px solid yellow;
+    font-weight: bold;
+    box-shadow: 1.3px 1.3px 1.3px rgba(0, 0, 0, 0.5);
+}
+
+.header-nav-link-active a {
+    color: white;
+}
+
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -1112,6 +1123,28 @@ footer {
     
     .nav-links.active li {
         margin: 10px 0;
+    }
+
+    .nav-links-current {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--wood-dark);
+        padding: 20px;
+        z-index: 1000;
+        border: yellow
+    }
+    
+    .nav-links.current li {
+        margin: 10px 0;
+    }
+
+    .nav-links li.active {
+        background-color: var(--wood-dark);
+        border-bottom: 2px solid yellow;
     }
     
     section {

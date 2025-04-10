@@ -161,4 +161,55 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Creating script to adjust CSS for showin what page we are on
+    // Got the link to the page the user is on.
+    // From there, take a look at the link, and adjust the CSS of that link button so that it shows a yellow border to show what page they are on.  
+    // Current idea is to get the url. Switch case for the url to then send it to the appropriate CSS class
+
 });
+
+function showCurrentPageButtons(){
+        let currentURL = location.href
+        // console.log(currentURL, "URL HERE")
+        const regex = /\/([^\/]+)\.html$/;
+        const regexMatch = currentURL.match(regex)
+        // console.log(regexMatch, "Regex checked")
+        let newURL = ""
+        if (regexMatch === null){
+            newURL = "index"      
+        } else {
+        newURL = regexMatch[1]
+        }
+        // console.log(newURL, " <--- Successfully acquired the new URL for checking")
+        let cssCheck = ""
+        switch (newURL) {
+            case "home":
+                cssCheck = "Home"
+                break;
+            case "services":
+                cssCheck = "Services"
+                break;
+            case "about":
+                cssCheck = "About Us"
+                break;
+            case "brands":
+                cssCheck = "Brand Portfolio"
+                break;
+            case "contact":
+                cssCheck = "Contact"
+                break;
+            case "index":
+                cssCheck = "Home"
+                break;
+        }
+
+        // console.log(cssCheck,  "<------ After Switch case is complete.")
+        const getAllHeaderLinks = document.querySelectorAll('.nav-links li a');
+        getAllHeaderLinks.forEach((link) => {
+            if (link.outerText === cssCheck){
+                link.parentElement.className = "header-nav-link-active"
+                // console.log("Found matching CSS element:", link.outerText, "vs", cssCheck)
+            }
+        })
+}
