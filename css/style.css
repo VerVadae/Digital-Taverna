@@ -178,6 +178,7 @@ header {
 }
 
 /* ---------- Hero Sections ---------- */
+/* Old Hero Sections . These are responsible for the other top parts on each other html file. */
 .hero, .page-hero {
     min-height: 80vh;
     display: flex;
@@ -224,10 +225,53 @@ header {
     margin-right: auto;
 }
 
+/* Updated Craig styling for the index page. Do not change IMportants as I am using it as a cop out. */
+.index-hero, .index-page-hero {
+    min-height: 30rem !important;
+    padding: 2rem 1.25rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../img/tavern-bg.png') center/cover;
+    position: relative;
+    color: white;
+    text-align: center;
+    max-width: 100% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+.index-pixel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+.index-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 48rem; 
+    width: 80%; /* Mobile devices can now see the SVG anmimation on the index page. Do not mess with. */
+}
+.index-hero h1, .index-page-hero h1 {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    color: var(--primary);
+}
+.index-hero p, .index-page-hero p {
+    font-size: 1.1rem;
+    margin-bottom: 1.875rem;
+    max-width: 35rem; /* About 600px at default font size */
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* ---------- Buttons ---------- */
 .pixel-btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 0.75rem 1.8rem;
     background-color: var(--primary);
     color: var(--wood-dark);
     text-decoration: none;
@@ -588,7 +632,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/tavern-floor.png');
+    /* background-image: url('../img/tavern-floor.png');  */ 
+    /* Fix above if we ever get to it. Craig has no idea what this is supposed to be in the great vibe vision. */
     background-size: 100px;
     opacity: 0.1;
     pointer-events: none;
@@ -603,7 +648,7 @@ section {
 }
 
 .pixel-character {
-    width: 140px;
+    width: 20rem;
     text-align: center;
     transition: transform 0.3s ease;
 }
@@ -613,8 +658,8 @@ section {
 }
 
 .pixel-character img {
-    width: 80px;
-    height: 80px;
+    width: 10rem;
+    height: 10rem;
     object-fit: contain;
     margin-bottom: 15px;
     border: 3px solid #8B4513;
