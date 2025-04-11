@@ -52,7 +52,12 @@
             
             <div class="contact-grid">
                 <div class="contact-form-container">
-                    <form class="contact-form pixel-form">
+                    <form action="https://formsubmit.co/a77c98592a1b9a214112fa2696eb1ffd" method="POST">
+                            <input type="hidden" name="_subject" value="Digital Taverna Contact Form Submission Received">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="http://localhost:3000/thanks.html">
+                            
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -62,6 +67,10 @@
                             <input type="email" id="email" name="email" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group">
+                            <label for="phone">Contact Number: Optional</label>
+                            <input type="text" id="phone" name="phone" placeholder="Optional: Enter your phone and country code.">
+                        </div>
+                        <div class="form-group">
                             <label for="company">Company Name</label>
                             <input type="text" id="company" name="company" placeholder="Enter your company name">
                         </div>
@@ -69,12 +78,13 @@
                             <label for="service">Service of Interest</label>
                             <select id="service" name="service">
                                 <option value="">Select a service</option>
-                                <option value="crm">CRM: Building Player Loyalty</option>
-                                <option value="seo">SEO & SEM: Maximize Your Reach</option>
-                                <option value="marketing">Digital Marketing</option>
-                                <option value="branding">Branding & Design</option>
-                                <option value="ai">AI & Future</option>
-                                <option value="multiple">Multiple Services</option>
+                                <option value="CRM Services">CRM: Building Player Loyalty</option>
+                                <option value="SEO and SEM Services">SEO & SEM: Maximize Your Reach</option>
+                                <option value="Marketing Services">Digital Marketing</option>
+                                <option value="Branding Services">Branding & Design</option>
+                                <option value="AI Services">AI & Future</option>
+                                <option value="Job Enquiries">Careers and Job Listings</option>
+                                <option value="Multiple Services">Multiple Services</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -97,8 +107,8 @@
                         <div class="pixel-icon-medium">
                             <img src="img/icon-phone.png" alt="Phone">
                         </div>
-                        <h3>Call Us</h3>
-                        <p>+1 (123) 456-7890</p>
+                        <h3>Call Us?</h3>
+                        <p>We're busy doing something awesome. Don't call us, we'll call or emial you.</p>
                     </div>
                     <div class="pixel-character-contact">
                         <img src="img/tavern-keeper.png" alt="Digital Taverna Keeper" class="pixel-character-img-large">
@@ -165,7 +175,6 @@
                     <h3>Contact Us</h3>
                     <ul>
                         <li>Email: info@digitaltaverna.com</li>
-                        <li>Phone: +1 (123) 456-7890</li>
                     </ul>
                 </div>
             </div>

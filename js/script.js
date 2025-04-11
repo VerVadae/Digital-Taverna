@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
     
-    // Form submission handling for spinning coins and form validation
+    // Form submission handling for spinning coins and form validation - This no longer works since using this email method. Maybe try again later.
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
@@ -136,39 +136,39 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Form submission handler
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Check form validity
-            if (contactForm.checkValidity()) {
-                // Form is valid - proceed with submission
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                submitButton.textContent = 'Sending...';
-                submitButton.disabled = true;
-                
-                setTimeout(function() {
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'form-success';
-                    successMessage.innerHTML = '<p>Message sent successfully! We\'ll get back to you soon.</p>';
-                    
-                    contactForm.innerHTML = '';
-                    contactForm.appendChild(successMessage);
-                }, 1500);
-            } else {
-                // Trigger validation display
-                contactForm.reportValidity();
-            }
-        });
     }
-
-    // Creating script to adjust CSS for showin what page we are on
-    // Got the link to the page the user is on.
-    // From there, take a look at the link, and adjust the CSS of that link button so that it shows a yellow border to show what page they are on.  
-    // Current idea is to get the url. Switch case for the url to then send it to the appropriate CSS class
-
 });
 
+// Form submission handler - Doesnt work now that the FormSender is enacted.
+// contactForm.addEventListener('submit', function(e) {
+//     e.preventDefault();
+    
+//     // Check form validity
+//     if (contactForm.checkValidity()) {
+//         // Form is valid - proceed with submission
+//         const submitButton = contactForm.querySelector('button[type="submit"]');
+//         submitButton.textContent = 'Sending...';
+//         submitButton.disabled = true;
+        
+//         setTimeout(function() {
+//             const successMessage = document.createElement('div');
+//             successMessage.className = 'form-success';
+//             successMessage.innerHTML = '<p>Message sent successfully! We\'ll get back to you soon.</p>';
+            
+//             contactForm.innerHTML = '';
+//             contactForm.appendChild(successMessage);
+//         }, 1500);
+//     } else {
+//         // Trigger validation display
+//         contactForm.reportValidity();
+//     }
+// });
+
+
+// Creating script to adjust CSS for showin what page we are on
+// Got the link to the page the user is on.
+// From there, take a look at the link, and adjust the CSS of that link button so that it shows a yellow border to show what page they are on.  
+// Current idea is to get the url. Switch case for the url to then send it to the appropriate CSS class
 function showCurrentPageButtons(){
         let currentURL = location.href
         // console.log(currentURL, "URL HERE")
