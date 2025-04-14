@@ -427,6 +427,9 @@ section {
 .values {
     margin-top: 80px;
 }
+.values h3{
+    font-size: larger;
+}
 
 .values-container {
     display: flex;
@@ -1273,6 +1276,13 @@ footer {
 .pixel-icon-img {
     width: 48px;
     height: 48px;
+    padding-right: 2rem;
+}
+
+.value-card-title{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* ---------- Services Section ---------- */
