@@ -165,16 +165,30 @@ document.addEventListener('DOMContentLoaded', function() {
 // });
 
 
-// Creating script to adjust CSS for showin what page we are on
-// Got the link to the page the user is on.
-// From there, take a look at the link, and adjust the CSS of that link button so that it shows a yellow border to show what page they are on.  
-// Current idea is to get the url. Switch case for the url to then send it to the appropriate CSS class
+
 function showCurrentPageButtons(){
         let currentURL = location.href
         // console.log(currentURL, "URL HERE")
+        const hashtagRegex = /#/
+
+        // Another if statement to check for quick link to headings. Presumes that quick links only work for services, which is so far true.
+        if (currentURL.match(hashtagRegex)){
+            //console.log("Are we here?")
+            const getAllHeaderLinks = document.querySelectorAll('.nav-links li a');
+            getAllHeaderLinks.forEach((link) => {
+                //console.log(link)
+                if (link.outerText === "Services"){
+                    link.parentElement.className = "header-nav-link-active"
+                    //console.log("Found matching CSS element:", link.outerText, "vs", "services check")
+            }
+        })
+        }
+
+        // Checks for all the other main pages to check for the heading.
+        else {
         const regex = /\/([^\/]+)\.html$/;
         const regexMatch = currentURL.match(regex)
-        // console.log(regexMatch, "Regex checked")
+        //console.log(regexMatch, "Regex checked")
         let newURL = ""
         if (regexMatch === null){
             newURL = "index"      
@@ -212,4 +226,5 @@ function showCurrentPageButtons(){
                 // console.log("Found matching CSS element:", link.outerText, "vs", cssCheck)
             }
         })
+    }
 }
